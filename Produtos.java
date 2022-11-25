@@ -1,3 +1,5 @@
+package ProjetoCRUD;
+
 // Bruno Ferreira, Eveliny Muniz, Camila Melo, Felipe Menezes, Filipe Boddenberg :)
 
 import java.io.File;
@@ -40,11 +42,8 @@ public class Produtos {
             }
         }
 
-
-
-
-
     }
+    
 
     public static void criarProduto(Scanner sc) throws IOException {
         String produtoFormatado = pegarInformacoesDoProduto(sc);
