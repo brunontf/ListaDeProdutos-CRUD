@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,32 +27,35 @@ public class Produtos {
         System.out.println("\n.:: Gerenciamento de produtos ::.");
 
         while(continuar) {
-            System.out.println("\nEscolha um das opções abaixo: ");
-            System.out.println("0 - Listar produtos");
-            System.out.println("1 - Cadastrar produto");
-            System.out.println("2 - Editar produto");
-            System.out.println("3 - Excluir produto");
-            System.out.println("4 - Pesquisar produto");
-            System.out.println("5 - Fazer compras");
-            System.out.println("6 - Sair");
+                try{
+                System.out.println("\nEscolha um das opções abaixo: ");
+                System.out.println("0 - Listar produtos");
+                System.out.println("1 - Cadastrar produto");
+                System.out.println("2 - Editar produto");
+                System.out.println("3 - Excluir produto");
+                System.out.println("4 - Pesquisar produto");
+                System.out.println("5 - Fazer compras");
+                System.out.println("6 - Sair");
 
-            opcaoEntrada = sc.nextLine();
+                opcaoEntrada = sc.nextLine();
 
-            switch (opcaoEntrada) {
-                case "0" -> listarProdutos();
-                case "1" -> criarProduto();
-                case "2" -> editarProduto();
-                case "3" -> excluirProduto();
-                case "4" -> pesquisarProduto();
-                case "5" -> fazerCompras();
-                case "6" -> continuar = false;
-                default -> System.out.println("Ops, opção inválida!");
-            }
+                switch (opcaoEntrada) {
+                    case "0" -> listarProdutos();
+                    case "1" -> criarProduto();
+                    case "2" -> editarProduto();
+                    case "3" -> excluirProduto();
+                    case "4" -> pesquisarProduto();
+                    case "5" -> fazerCompras();
+                    case "6" -> continuar = false;
+                    default -> System.out.println("Ops, opção inválida!");
+                }
+
+                }catch (InputMismatchException  e){
+                    System.err.println("Valor inválido.");
+                }
+        
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 3358b3e1a2ca8125452b5cfc3cc6180b2fc2da70
     }
     
 
@@ -197,20 +201,20 @@ public class Produtos {
     }
 
     public static void fazerCompras() throws IOException {
-        List<String> listaProdutos = listarProdutos();
-
+        
         String nomeProduto;
         Integer quantidadeProduto;
         Double valorProduto, somaParcial;
         Double somaTotal = 0d;
-
+        
         List<String> produtosComprados = new ArrayList<>();
         String logCompras = "";
-
+        
         System.out.println("\n.:: Vamos às compras ::.\n");
-
+        
         boolean continuarComprando = false;
         do {
+            List<String> listaProdutos = listarProdutos();
             System.out.println("Informe o id do produto que deseja comprar: ");
             Integer id = sc.nextInt();
 
